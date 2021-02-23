@@ -20,9 +20,6 @@ contract IdleDepositForwarder is BaseRelayRecipient, Initializable, OwnableUpgra
   address public idleToken;
   address public underlying;
 
-  address public fooValue;
-  uint256 public barValue;
-
   function initialize(address _trustedForwarder, address _idleToken) public initializer {
     versionRecipient = "2.0.0-alpha.1+opengsn.test.recipient";
     trustedForwarder = _trustedForwarder;
