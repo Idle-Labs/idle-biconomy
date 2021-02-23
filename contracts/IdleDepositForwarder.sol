@@ -49,4 +49,12 @@ contract IdleDepositForwarder is BaseRelayRecipient, Initializable, OwnableUpgra
     uint256 minted = IIdleTokenV3_1(idleToken).mintIdleToken(amount, true, address(0));
     IERC20Upgradeable(idleToken).safeTransfer(sender, minted);
   }
+
+  function emergencyWithdrawToken(address _token, address _to) external onlyOwner {
+    IERC20Upgradeable(_token).safeTransfer(_to, IERC20Upgradeable(_token).balanceOf(address(this)));
+  }
+
+  function pause() external onlyOwner {
+    _pause();
+  }
 }
