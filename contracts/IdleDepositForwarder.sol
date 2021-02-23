@@ -30,14 +30,14 @@ contract IdleDepositForwarder is BaseRelayRecipient, Initializable, OwnableUpgra
     IERC20Upgradeable(underlying).safeApprove(idleToken, uint256(-1));
   }
 
-  function permitAndDeposit(uint256 amount, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s) external whenNotPaused {
+  function permitAndDeposit(uint256 amount, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s) external whenNotPaused trustedForwarderOnly {
     // the original sender, sent by the trusted forwarder
     address sender = _forwardedMsgSender();
     IERC20Permit(underlying).permit(sender, address(this), nonce, expiry, true, v, r, s);
     deposit(sender, amount);
   }
 
-  function permitEIP2612AndDeposit(uint256 amount, uint256 expiry, uint8 v, bytes32 r, bytes32 s) external whenNotPaused {
+  function permitEIP2612AndDeposit(uint256 amount, uint256 expiry, uint8 v, bytes32 r, bytes32 s) external whenNotPaused trustedForwarderOnly {
     // the original sender, sent by the trusted forwarder
     address sender = _forwardedMsgSender();
     IERC20Permit(underlying).permit(sender, address(this), amount, expiry, v, r, s);
