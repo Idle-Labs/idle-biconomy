@@ -6,21 +6,24 @@ const IERC20 = artifacts.require('IERC20Nonces');
 const IIdleTokenV3_1 = artifacts.require('IIdleTokenV3_1');
 const IdleDepositForwarder = artifacts.require('IdleDepositForwarder');
 const TestForwarder = artifacts.require('TestForwarder');
+const { getNetworkAddresses } = require("./addresses");
+
 
 // config
 const CHAIN_ID = 1;
 const network = "mainnet";
 const holder = "0xfbb1b73c4f0bda4f67dca266ce6ef42f520fbb98";
+const addresses = getNetworkAddresses(network);
 
 const scenarios = [
   {
     signPermitFunc: signPermit,
-    idleTokenAddress: IdleTokens[network].idleDAIBest,
+    idleTokenAddress: addresses.idleDAIBest,
     holder,
   },
   {
     signPermitFunc: signPermitEIP2612,
-    idleTokenAddress: IdleTokens[network].idleUSDCBest,
+    idleTokenAddress: addresses.idleUSDCBest,
     holder,
   },
 ];
