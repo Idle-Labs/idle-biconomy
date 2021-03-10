@@ -6,7 +6,7 @@ const { HardwareSigner } = require("../../lib/HardwareSigner");
 async function main() {
   const network = hre.network.name;
 
-  const signer = new LedgerSigner(ethers.provider, null, "m/44'/60'/0'/0/0");
+  const signer = new HardwareSigner(ethers.provider, null, "m/44'/60'/0'/0/0");
   // const signer = (await ethers.getSigners())[0];
 
   const address = await signer.getAddress();
@@ -40,9 +40,8 @@ async function main() {
     const args = [addresses.biconomyTrustedForwarder, tokenAddress];
     const proxy = await upgrades.deployProxy(IdleDepositForwarder, args);
     await proxy.deployed();
-    console.log("IdleDepositForwarder deployed to:", proxy.address);
+    console.log("IdleDepositForwarder deployed at:", proxy.address);
   }
-
 }
 
 main()
