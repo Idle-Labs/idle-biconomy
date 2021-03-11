@@ -1,8 +1,8 @@
 import hre from "hardhat";
 import { Biconomy } from "@biconomy/mexa";
-import { getNetworkAddresses } from "./addresses";
+import { getNetworkAddresses } from "../lib/addresses";
+import { signPermit } from "../lib";
 
-const Foo = artifacts.require('Foo')
 const account = "0xfbb1b73c4f0bda4f67dca266ce6ef42f520fbb98";
 
 const initBiconomy = (biconomy) => {
@@ -22,14 +22,12 @@ async function main() {
   //   method: "hardhat_impersonateAccount",
   //   params: [account]}
   // );
-  console.log(web3.utils.sha3('TestForwarderMessage(string,address,address,address)'))
-  return
+
   const addresses = getNetworkAddresses(hre.network.name);
   const [account] = await web3.eth.getAccounts();
 
-  // const biconomy = new Biconomy(hre.network.provider, {
   const biconomy = new Biconomy(web3.currentProvider, {
-    apiKey: "tS9FA6Ssr.17ac3b78-0c4e-4a47-be36-71cb381f2c02",
+    apiKey: process.env.IDLE_BICONOMY_KOVAN_API_KEY,
     debug: true
   });
   const _ethers = new ethers.providers.Web3Provider(biconomy);
@@ -42,6 +40,8 @@ async function main() {
 
   const tokenAddress = addresses.dai;
   console.log("getting user's permit to spend dai");
+  console.log(tokenAddress);
+  return;
   const x = await erc20ForwarderClient.daiPermit(daiPermitOptions);
   console.log(x)
 }
