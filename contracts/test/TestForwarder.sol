@@ -6,8 +6,8 @@ pragma solidity ^0.6.2;
  * A subclass must use "_msgSender()" instead of "msg.sender"
  */
 contract TestForwarder {
-  function execute(address target, string memory sig, bytes memory data) public {
-    bytes memory callData = abi.encodePacked(bytes4(keccak256(bytes(sig))), data, msg.sender);
+  function execute(address target, string memory sig, bytes memory data, address realSender) public {
+    bytes memory callData = abi.encodePacked(bytes4(keccak256(bytes(sig))), data, realSender);
     (bool success,) = target.call(callData);
     require(success, "error executing tx");
   }

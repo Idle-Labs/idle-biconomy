@@ -30,6 +30,11 @@ contract IdleDepositForwarder is BaseRelayRecipient, Initializable, OwnableUpgra
     IERC20Upgradeable(underlying).safeApprove(idleToken, uint256(-1));
   }
 
+  function setBiconomyConfig(string memory _versionRecipient, address _trustedForwarder) public onlyOwner {
+    versionRecipient = _versionRecipient;
+    trustedForwarder = _trustedForwarder;
+  }
+
   function permitAndDeposit(uint256 amount, uint256 nonce, uint256 expiry, uint8 v, bytes32 r, bytes32 s) external whenNotPaused {
     // the original sender, sent by the trusted forwarder
     address sender = _forwardedMsgSender();
