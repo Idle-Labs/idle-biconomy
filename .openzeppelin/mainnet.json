@@ -1,0 +1,103 @@
+{
+  "manifestVersion": "3.1",
+  "impls": {
+    "a399a9e42d2c5e85b4a4f60fa79a5f0b46ee8c5b89084764ed7d7c4ea8bae8de": {
+      "address": "0x9707cB558Bd61077Fb2089accD16313b0E6a7C61",
+      "txHash": "0x21a7a09935648185edbd2f4e4d7e171fe78e0eb2799a7c6270679b8a85888b57",
+      "layout": {
+        "storage": [
+          {
+            "contract": "BaseRelayRecipient",
+            "label": "trustedForwarder",
+            "type": "t_address",
+            "src": "contracts/BaseRelayRecipient.sol:15"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:25"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:30"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:20"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:74"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "_paused",
+            "type": "t_bool",
+            "src": "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol:28"
+          },
+          {
+            "contract": "PausableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol:96"
+          },
+          {
+            "contract": "IdleDepositForwarder",
+            "label": "versionRecipient",
+            "type": "t_string_storage",
+            "src": "contracts/IdleDepositForwarder.sol:18"
+          },
+          {
+            "contract": "IdleDepositForwarder",
+            "label": "idleToken",
+            "type": "t_address",
+            "src": "contracts/IdleDepositForwarder.sol:20"
+          },
+          {
+            "contract": "IdleDepositForwarder",
+            "label": "underlying",
+            "type": "t_address",
+            "src": "contracts/IdleDepositForwarder.sol:21"
+          }
+        ],
+        "types": {
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    }
+  },
+  "admin": {
+    "address": "0x6251860F670E857B7586133f482400E86a387405",
+    "txHash": "0xcc540e10951eb3d7b61d137b19f604f7eaf2eda5559993aae912cc5ef6d14459"
+  }
+}
