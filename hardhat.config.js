@@ -43,7 +43,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 10000
+            runs: 999999
           }
         }
       }
@@ -54,6 +54,8 @@ module.exports = {
     local: {
       url: "http://127.0.0.1:8545/",
       timeout: 120000,
+      gasPrice: 80000000000, // 80 gwei
+      gas: 300000,
     },
     kovan: {
       url: `https://eth-kovan.alchemyapi.io/v2/${process.env.IDLE_ALCHEMY_KEY}`,
@@ -64,8 +66,11 @@ module.exports = {
       accounts: rinkebyAccounts,
     },
     mainnet: {
-      url: `https://mainnet.infura.io/v3/${process.env.IDLE_INFURA_KEY}`,
-      accounts: mainnetAccounts,
+      url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.IDLE_ALCHEMY_KEY}`,
+      timeout: 12000000,
+      // accounts: mainnetAccounts,
+      gasPrice: 100000000000, //100 gwei
+      gas: 500000,
     },
   },
 };

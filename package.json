@@ -15,7 +15,7 @@
     "chai": "^4.3.0",
     "ethereum-waffle": "^3.2.2",
     "ethers": "^5.0.29",
-    "hardhat": "^2.0.8"
+    "hardhat": "^2.1.2"
   },
   "dependencies": {
     "@biconomy/mexa": "^2.0.0",
