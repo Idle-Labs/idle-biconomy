@@ -27,7 +27,7 @@ async function main() {
     const forwarderAddress = addresses.idleDepositForwarders[forwarderToken];
     console.log(`setting biconomy config to ${forwarderToken} (${forwarderAddress})`)
     const forwarder = new ethers.Contract(forwarderAddress, IdleDepositForwarder.abi, signer);
-    // await forwarder.setBiconomyConfig(versionRecipient, trustedForwarder);
+    await forwarder.setBiconomyConfig(versionRecipient, trustedForwarder);
     console.log("new trustedForwarder: ", (await forwarder.trustedForwarder()))
     console.log("new versionRecipient: ", (await forwarder.versionRecipient()))
   }
