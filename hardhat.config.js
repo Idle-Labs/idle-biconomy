@@ -56,6 +56,7 @@ module.exports = {
       timeout: 120000,
       gasPrice: 80000000000, // 80 gwei
       gas: 300000,
+      accounts: []
     },
     kovan: {
       url: `https://eth-kovan.alchemyapi.io/v2/${process.env.IDLE_ALCHEMY_KEY}`,

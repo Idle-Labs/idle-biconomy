@@ -7,15 +7,16 @@ async function main() {
   const network = hre.network.name;
   const addresses = getNetworkAddresses(hre.network.name);
 
-  // const signer = new HardwareSigner(ethers.provider, null, "m/44'/60'/0'/0/0");
-  const signer = (await ethers.getSigners())[0];
+  const signer = new HardwareSigner(ethers.provider, null, "m/44'/60'/0'/0/0");
+  const signerAddress = await signer.getAddress();
+  // const signer = (await ethers.getSigners())[0];
 
-  const chainId = await confirmRun(hre, signer);
+  const chainId = await confirmRun(hre, signerAddress);
 
   // in fork, we can send 10 ETH from accounts[0] to the ledger account
   if (chainId === 31337) {
     const accounts = await web3.eth.getAccounts();
-    await web3.eth.sendTransaction({from: accounts[0], to: signer.address, value: "10000000000000000000"})
+    await web3.eth.sendTransaction({from: accounts[0], to: signerAddress, value: "10000000000000000000"})
   }
 
   for (const token in addresses.idleTokens) {
